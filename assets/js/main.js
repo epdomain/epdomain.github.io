@@ -200,6 +200,42 @@
   });
 
   /**
+   * Video isotope and filter
+   */
+    /**
+   * Porfolio isotope and filter
+   */
+    window.addEventListener('load', () => {
+      let portfolioContainer = select('.video-container');
+      if (portfolioContainer) {
+        let portfolioIsotope = new Isotope(portfolioContainer, {
+          itemSelector: '.video-item'
+        });
+  
+        let portfolioFilters = select('#video-flters li', true);
+  
+        on('click', '#video-flters li', function(e) {
+          e.preventDefault();
+          portfolioFilters.forEach(function(el) {
+            el.classList.remove('filter-active');
+          });
+          this.classList.add('filter-active');
+  
+          portfolioIsotope.arrange({
+            filter: this.getAttribute('data-filter')
+          });
+          portfolioIsotope.on('arrangeComplete', function() {
+            AOS.refresh()
+          });
+        }, true);
+        portfolioIsotope.arrange({
+          filter: ".filter-en"
+        });
+      }
+  
+    });
+
+  /**
    * Initiate portfolio lightbox 
    */
   const portfolioLightbox = GLightbox({
