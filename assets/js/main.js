@@ -216,6 +216,14 @@
   });
 
   /**
+   * Initiate Video popup lightbox
+   */
+  const videoLightbox = GLightbox({ 
+    selector: '.video-lightbox',
+    width: "100%"
+  });
+
+  /**
    * Portfolio details slider
    */
   new Swiper('.portfolio-details-slider', {
